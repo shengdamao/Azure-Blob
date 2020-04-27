@@ -13,7 +13,7 @@ namespace FunctionApp1
     public static class Function1
     {
         [FunctionName("Function1")]
-        public static void Run([BlobTrigger("dev/{name}", Connection = "inputBlob-1")]Stream myBlob, string name,
+        public static void Run([BlobTrigger("dev/{name}", Connection = "blobtrigger-1")]Stream myBlob, string name,
             [Blob("dev/inputblob-special.txt", FileAccess.Read, Connection = "datalake-1")] Stream inputBlob,
             ILogger log)
         {
