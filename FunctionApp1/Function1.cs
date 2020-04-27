@@ -13,8 +13,8 @@ namespace FunctionApp1
     public static class Function1
     {
         [FunctionName("Function1")]
-        public static void Run([BlobTrigger("dev/{name}", Connection = "datalake-1")]Stream myBlob, string name,
-            [Blob("dev/inputblob-special.txt", FileAccess.Read, Connection = "inputBlob-1")] Stream inputBlob,
+        public static void Run([BlobTrigger("dev/{name}", Connection = "inputBlob-1")]Stream myBlob, string name,
+            [Blob("dev/inputblob-special.txt", FileAccess.Read, Connection = "datalake-1")] Stream inputBlob,
             ILogger log)
         {
            
@@ -35,7 +35,7 @@ namespace FunctionApp1
             StreamReader inpubReader = new StreamReader(inputBlob);
 
 
-            log.LogInformation($"C# Blob trigger function Processed blob\n Name:output1.txt \n Size: {inputBlob.Length} Bytes " +
+            log.LogInformation($"C# Blob trigger function Processed blob\n Name:inputblob-special.txt \n Size: {inputBlob.Length} Bytes " +
                 $"\n content: {inpubReader.ReadToEnd()}");
 
         }
